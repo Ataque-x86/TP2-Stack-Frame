@@ -12,7 +12,7 @@ to_int:
     
     # ------------------ MAPA DE LA PILA (Stack Frame) ------------------
     # Visto desde %rbp este es el panorama:
-    # 16(%rbp) -> 7mo parámetro que mandó C (a)
+    # 16(%rbp) -> 9no parámetro que mandó C (a)
     #  8(%rbp) -> Dirección de retorno automático de la instrucción CALL
     #  0(%rbp) -> Valor original de %rbp (puesto por el pushq arriba)
     
