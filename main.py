@@ -57,11 +57,11 @@ def print_results_table(results):
 flag = True
 
 print(
-    "gini>> Este es un programa para obtener los valores, de un cierto pais, del indice GINI\n"
+    "gini>> Este es un programa para obtener los valores de un codigo de pais del indice GINI (ej: ar, arg)\n"
 )
 
 while flag:
-    country = input("gini>> Ingrese un pais: ")
+    country = input("gini>> Ingrese un codigo de pais (ej: ar o arg): ")
 
     URL = f"https://api.worldbank.org/v2/country/{country}/indicator/SI.POV.GINI?format=json&date=2011:2020&per_page=1000"
 
@@ -79,8 +79,18 @@ while flag:
         flag = input("Continuar --> 1\nFinalizar --> 0\n").strip() == "1"
         continue
 
+    if (
+        isinstance(data, list)
+        and data
+        and isinstance(data[0], dict)
+        and "message" in data[0]
+    ):
+        print("gini>> El codigo de pais ingresado es invalido.\n")
+        flag = input("Continuar --> 1\nFinalizar --> 0\n").strip() == "1"
+        continue
+
     if len(data) < 2 or not isinstance(data[1], list):
-        print("gini>> No se encontraron datos para el pais ingresado.\n")
+        print("gini>> No se encontraron datos para el codigo de pais ingresado.\n")
         flag = input("Continuar --> 1\nFinalizar --> 0\n").strip() == "1"
         continue
 
@@ -110,7 +120,7 @@ while flag:
 
     if not found_values:
         print(
-            "gini>> El pais ingresado no tiene valores GINI disponibles en ese rango.\n"
+            "gini>> El codigo de pais ingresado no tiene valores GINI disponibles en ese rango.\n"
         )
 
     flag = input("Continuar --> 1\nFinalizar --> 0\n").strip() == "1"

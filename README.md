@@ -10,7 +10,7 @@ Este es el repositorio del trabajo práctico N° 2 de la materia de Sistemas de 
 
 # Script de Python - main.py
 
-Este programa en Python consulta la API del Banco Mundial para obtener valores del índice GINI de un país ingresado por el usuario (entre 2011 y 2020). 
+Este programa en Python consulta la API del Banco Mundial para obtener valores del indice GINI de un codigo de pais ingresado por el usuario (por ejemplo, `ar` o `arg`) entre 2011 y 2020.
 
 Luego, utiliza la librería `ctypes` para cargar una biblioteca compartida escrita en C (`to_int_plus_one.so`) y llamar a una función que convierte cada valor flotante en entero y le suma uno. 
 
@@ -40,7 +40,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    A[Usuario ingresa un país] --> B[main.py]
+    A[Usuario ingresa un codigo de pais] --> B[main.py]
     B --> C[Consulta a la API del Banco Mundial]
     C --> D[Respuesta JSON con valores GINI]
     D --> E[main.py filtra valores no nulos]
