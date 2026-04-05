@@ -1,5 +1,6 @@
 import requests
 import ctypes
+import matplotlib.pyplot as plt
 from pathlib import Path
 
 # Cargamos la libreria
@@ -99,6 +100,8 @@ while flag:
     values = data[1]
     found_values = False
     results = []
+    years = []
+    gini_values = []
 
     # Procesamos los valores obtenidos de la API, filtrando los que
     # no tienen valor y aplicando la conversión a los que si lo tienen
@@ -106,6 +109,8 @@ while flag:
         if item["value"] is None:
             continue
         found_values = True
+        years.append(int(item["date"]))
+        gini_values.append(item["value"])
 
         # Convertimos el valor a entero usando la función de conversión en C
         int_converted = float_to_int_plus_one(item["value"])
@@ -119,6 +124,17 @@ while flag:
 
     if found_values:
         print_results_table(results)
+
+        combined = sorted(zip(years, gini_values))
+        years_sorted, values_sorted = zip(*combined)
+
+        plt.figure()
+        plt.plot(years_sorted, values_sorted)
+        plt.xlabel("Año")
+        plt.ylabel("Índice GINI")
+        plt.title(f"Índice GINI - {country.upper()}")
+        plt.grid()
+        plt.show()
 
     if not found_values:
         print(

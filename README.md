@@ -22,6 +22,8 @@ Cada valor no nulo se envía a una librería compartida escrita en C y assembler
 - `src/to_int.s` convierte `float` a `int`
 - `src/plus_one.s` suma `1` al valor entero
 
+El programa muestra una tabla con los valores originales y convertidos, y además genera un gráfico del índice GINI por año usando `matplotlib`.
+
 Los artefactos compilados se generan en `build/`.
 
 ## Estructura del repositorio
@@ -57,6 +59,11 @@ make debug
 
 ## Ejecución
 
+Dependencias de Python utilizadas en tiempo de ejecución:
+
+- `requests`
+- `matplotlib`
+
 Ejecutar desde la raíz del repositorio:
 
 ```bash
@@ -68,6 +75,8 @@ o bien:
 ```bash
 make run
 ```
+
+Después de imprimir la tabla, el programa abre una ventana con el gráfico de los valores GINI ordenados por año.
 
 ## GDB
 
