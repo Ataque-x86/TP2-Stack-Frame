@@ -1,0 +1,6 @@
+services:
+  tp2:
+    build: .
+    volumes:
+      - ./graficos:/graficos
+    user: "1000"
