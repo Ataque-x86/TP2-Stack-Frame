@@ -107,3 +107,31 @@ run
 ## Verification Report
 
 El informe de compilación, ejecución y depuración se encuentra en [`docs/verification.md`](docs/verification.md).
+
+## Docker
+
+### Build
+
+```bash
+docker compose build
+```
+
+### Run
+
+```bash
+docker compose run -i --rm tp2
+```
+
+Luego:
+- Ingresá el código de país (ej: `ar`)
+- `0` para salir
+
+El gráfico se guarda en `graficos/gini.png` (se sobrescribe cada vez).
+
+### Notas
+
+- Requiere entrada interactiva. Para automatización:
+  ```bash
+  echo "ar\n0" | docker compose run -i --rm tp2
+  ```
+- El directorio `graficos/` debe existir previamente
